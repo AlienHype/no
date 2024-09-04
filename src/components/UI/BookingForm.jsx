@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "../../styles/booking-form.css";
 import { Form, FormGroup, Label } from "reactstrap";
-import { auth } from "../../firebase-config"; // Import auth from your Firebase config
-import { onAuthStateChanged } from "firebase/auth"; // Import Firebase Auth state change listener
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { auth } from "../../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import PaymentMethod from "./PaymentMethod"; // Import PaymentMethod component
 
-const BookingForm = () => {
+
+const BookingForm = ({ carId }) => {
   const [formData, setFormData] = useState({
+    carId: carId, // Include car ID here
     firstName: "",
     lastName: "",
     email: "",
@@ -16,16 +19,16 @@ const BookingForm = () => {
     toAddress: "",
     personCount: "1 person",
     comments: "",
-    paymentMethod: "",
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false); // State to control visibility of payment options
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Listen for authentication state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("User data: ", user); // Log the user object to see the structure
+        console.log("User data: ", user);
 
         const displayName = user.displayName || "";
         const [firstName, lastName] = displayName.split(" ") || ["", ""];
@@ -40,7 +43,6 @@ const BookingForm = () => {
       }
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
@@ -51,33 +53,39 @@ const BookingForm = () => {
     });
   };
 
-  const handlePaymentChange = (paymentMethod) => {
-    setFormData({
-      ...formData,
-      paymentMethod,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = (paymentMethod) => {
+    // Handle form submission
     const serviceID = "service_cja2s17";
     const templateID = "template_i01zyfh";
     const userID = "e8W6hJlaDBpjDWRA_";
 
     const emailData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
       ...formData,
     };
 
-    emailjs.send(serviceID, templateID, emailData, userID)
+    emailjs
+      .send(serviceID, templateID, emailData, userID)
       .then((response) => {
         console.log("Email sent successfully!", response.status, response.text);
-        
+
         // Automatically redirect to CarListing
-        navigate('/cars');
+        navigate("/cars");
+
+        // Handle redirection based on payment method
+        switch (paymentMethod) {
+          case "PayPal":
+            navigate("/StripePayement");
+            break;
+          case "Face to Face":
+            window.location.href =
+              "https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rental";
+            break;
+          case "Juice MCB":
+            window.location.href = "https://ib.mcb.mu/T001/banking.jsp";
+            break;
+          default:
+            navigate("/confirmation");
+        }
       })
       .catch((err) => {
         console.error("Failed to send email. Error:", err);
@@ -85,7 +93,7 @@ const BookingForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={(e) => e.preventDefault()}>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
         <Label for="firstName">
           First Name <span className="required-asterisk">*</span>
@@ -194,11 +202,17 @@ const BookingForm = () => {
         ></textarea>
       </FormGroup>
 
-      <div className="text-end mt-5">
-        <button type="submit" style={{ backgroundColor: "red", color: "white"}}>
-          Reserve Now
-        </button>
-      </div>
+      {/* Button to show payment options */}
+      <button
+        type="button"
+        className="btn btn-primary mt-3"
+        onClick={() => setShowPaymentOptions(!showPaymentOptions)}
+      >
+        {showPaymentOptions ? "Hide Payment Options" : "Show Payment Options"}
+      </button>
+
+      {/* Conditionally render PaymentMethod component */}
+      {showPaymentOptions && <PaymentMethod handlePayment={handleSubmit} />}
     </Form>
   );
 };

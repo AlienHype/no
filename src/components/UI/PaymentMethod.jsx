@@ -1,55 +1,48 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-
-import masterCard from "../../assets/all-images/master-card.jpg";
+import { useNavigate } from "react-router-dom";
 import paypal from "../../assets/all-images/paypal.jpg";
+import juice from "../../assets/all-images/juice.png";
+import facetoface from "../../assets/all-images/facetoface.png";
 import "../../styles/payment-method.css";
 
-const PaymentMethod = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+const PaymentMethod = ({ handlePayment }) => {
+  const navigate = useNavigate();
 
-  const handleReserveClick = () => {
-    navigate("/cart"); // Navigate to the cart page
+  const handlePaymentClick = (method) => {
+    handlePayment(method);
   };
 
   return (
     <>
-      <div className="payment">
-        <label htmlFor="" className="d-flex align-items-center gap-2">
-          <input type="radio" name="payment-method" /> Direct Bank Transfer
-        </label>
+      <div className="payment-buttons">
+        <button 
+          className="payment-button paypal-button" 
+          onClick={() => handlePaymentClick("PayPal")}
+        >
+          <img src={paypal} alt="Online Payement" className="payment-icon" />
+          Pay Online
+        </button>
       </div>
 
-      <div className="payment mt-3">
-        <label htmlFor="" className="d-flex align-items-center gap-2">
-          <input type="radio" name="payment-method" /> Cheque Payment
-        </label>
+      <div className="payment-buttons mt-3">
+        <button 
+          className="payment-button face-to-face-button" 
+          onClick={() => handlePaymentClick("Face to Face")}
+        >
+          <img src={facetoface} alt="Face to Face" className="payment-icon" />
+          Pay Face to Face
+        </button>
       </div>
 
-      <div className="payment mt-3 d-flex align-items-center justify-content-between">
-        <label htmlFor="" className="d-flex align-items-center gap-2">
-          <input type="radio" name="payment-method" /> Master Card
-        </label>
-
-        <img src={masterCard} alt="Master Card" />
+      <div className="payment-buttons mt-3">
+        <button 
+          className="payment-button juice-mcb-button" 
+          onClick={() => handlePaymentClick("Juice MCB")}
+        >
+          <img src={juice} alt="Juice MCB" className="payment-icon" />
+          Pay with Juice MCB
+        </button>
       </div>
-
-      <div className="payment mt-3 d-flex align-items-center justify-content-between">
-        <label htmlFor="" className="d-flex align-items-center gap-2">
-          <input type="radio" name="payment-method" /> Paypal
-        </label>
-
-        <img src={paypal} alt="Paypal" />
-      </div>
-
-      <div className="payment mt-3">
-        <label htmlFor="" className="d-flex align-items-center gap-2">
-          <input type="radio" name="payment-method" /> Payment on the spot/Face to Face
-        </label>
-      </div>
-
-      
-
     </>
   );
 };

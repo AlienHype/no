@@ -48,6 +48,12 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this car?")) {
+      setCars(cars.filter(car => car.id !== id));
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewCar(prevState => ({
@@ -199,6 +205,9 @@ const AdminDashboard = () => {
               </button>
               <button onClick={() => handleEdit(car.id)}>
                 Edit Price
+              </button>
+              <button onClick={() => handleDelete(car.id)}>
+                Delete Car
               </button>
             </div>
           </div>
