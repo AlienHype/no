@@ -14,15 +14,7 @@ const PaymentMethod = ({ handlePayment }) => {
 
   return (
     <>
-      <div className="payment-buttons">
-        <button 
-          className="payment-button paypal-button" 
-          onClick={() => handlePaymentClick("PayPal")}
-        >
-          <img src={paypal} alt="Online Payement" className="payment-icon" />
-          Pay Online
-        </button>
-      </div>
+
 
       <div className="payment-buttons mt-3">
         <button 

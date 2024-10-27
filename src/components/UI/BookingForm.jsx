@@ -5,13 +5,13 @@ import { Form, FormGroup, Label } from "reactstrap";
 import { auth } from "../../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import PaymentMethod from "./PaymentMethod"; // Import PaymentMethod component
-
+import PaymentMethod from "./PaymentMethod";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookingForm = ({ carId }) => {
   const [formData, setFormData] = useState({
-    carId: carId, // Include car ID here
-    firstName: "",
+    carId: carId,
     lastName: "",
     email: "",
     phoneNumber: "",
@@ -21,7 +21,7 @@ const BookingForm = ({ carId }) => {
     comments: "",
   });
 
-  const [showPaymentOptions, setShowPaymentOptions] = useState(false); // State to control visibility of payment options
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false);
 
   const navigate = useNavigate();
 
@@ -53,29 +53,40 @@ const BookingForm = ({ carId }) => {
     });
   };
 
+  const isFormComplete = () => {
+    return (
+      formData.firstName &&
+      formData.lastName &&
+      formData.email &&
+      formData.phoneNumber &&
+      formData.fromAddress &&
+      formData.toAddress &&
+      formData.personCount
+    );
+  };
+
   const handleSubmit = (paymentMethod) => {
-    // Handle form submission
+    if (!isFormComplete()) {
+      toast.error("Please complete the booking form before proceeding with payment.");
+      return;
+    }
+
     const serviceID = "service_cja2s17";
     const templateID = "template_i01zyfh";
     const userID = "e8W6hJlaDBpjDWRA_";
 
-    const emailData = {
-      ...formData,
-    };
+    const emailData = { ...formData };
 
     emailjs
       .send(serviceID, templateID, emailData, userID)
       .then((response) => {
         console.log("Email sent successfully!", response.status, response.text);
 
-        // Automatically redirect to CarListing
-        navigate("/cars");
+        
+        toast.success("You have successfully booked a car!");
 
         // Handle redirection based on payment method
         switch (paymentMethod) {
-          case "PayPal":
-            navigate("/StripePayement");
-            break;
           case "Face to Face":
             window.location.href =
               "https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rental";
@@ -212,7 +223,12 @@ const BookingForm = ({ carId }) => {
       </button>
 
       {/* Conditionally render PaymentMethod component */}
-      {showPaymentOptions && <PaymentMethod handlePayment={handleSubmit} />}
+      {showPaymentOptions && (
+        <PaymentMethod handlePayment={handleSubmit} isFormComplete={isFormComplete} />
+      )}
+
+     
+      <ToastContainer />
     </Form>
   );
 };

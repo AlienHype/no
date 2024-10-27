@@ -2,11 +2,11 @@
 import img01 from "../all-images/cars-img/nissan-offer.png";
 import img02 from "../all-images/cars-img/offer-toyota.png";
 import img03 from "../all-images/cars-img/bmw-offer.png";
-import img04 from "../all-images/cars-img/nissan-offer.png";
-import img05 from "../all-images/cars-img/offer-toyota.png";
+import img04 from "../all-images/cars-img/ranger.png";
+import img05 from "../all-images/cars-img/yaris.png";
 import img06 from "../all-images/cars-img/mercedes-offer.png";
-import img07 from "../all-images/cars-img/toyota-offer-2.png";
-import img08 from "../all-images/cars-img/mercedes-offer.png";
+import img07 from "../all-images/cars-img/cam.png";
+import img08 from "../all-images/cars-img/merc.png";
 
 const carData = [
   {
@@ -17,7 +17,7 @@ const carData = [
     carName: "Ford Range F150",
     imgUrl: img01,
     model: "2023  Orange",
-    price: 500,
+    price: 1500,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -34,7 +34,7 @@ const carData = [
     carName: "Toyota Yaris GR",
     imgUrl: img02,
     model: "Model-2022",
-    price: 450,
+    price: 1350,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -51,7 +51,7 @@ const carData = [
     carName: "BMW M5 CS",
     imgUrl: img03,
     model: "2022  Red",
-    price: 1350,
+    price: 3550,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -67,7 +67,7 @@ const carData = [
     carName: "Ford Ranger",
     imgUrl: img04,
     model: "Model-2022",
-    price: 700,
+    price: 4000,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -83,7 +83,7 @@ const carData = [
     carName: "Toyota Yaris",
     imgUrl: img05,
     model: "Model-2022",
-    price: 350,
+    price: 1200,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -99,7 +99,7 @@ const carData = [
     carName: "Mercedes Benz",
     imgUrl: img06,
     model: "Model-2022",
-    price: 850,
+    price: 2500,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -114,8 +114,8 @@ const carData = [
     rating: 82,
     carName: "Toyota Camry",
     imgUrl: img07,
-    model: "Model 3",
-    price: 950,
+    model: "Model 2021",
+    price: 1950,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",
@@ -130,8 +130,8 @@ const carData = [
     rating: 52,
     carName: "Mercedes Benz luxury",
     imgUrl: img08,
-    model: "Model 3",
-    price: 1250,
+    model: "Model 2023",
+    price: 4500,
     speed: "20kmpl",
     gps: "GPS Navigation",
     seatType: "Heated seats",

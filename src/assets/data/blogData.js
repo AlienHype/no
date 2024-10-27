@@ -20,7 +20,7 @@ const blogData = [
   {
     id: 2,
     title: "If your car battery is down",
-    author: "tUSHAL",
+    author: "TUSHAL",
     date: "12 Dec, 2020",
     time: "9pm",
     imgUrl: img02,

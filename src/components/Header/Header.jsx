@@ -129,61 +129,74 @@ const Header = () => {
 
       {/* Header Middle */}
       <div className="header__middle">
-        <Container>
-          <Row>
-            <Col lg="4" md="3" sm="4">
-              <div className="logo">
-                <h1>
-                  <Link to="/home" className="d-flex align-items-center gap-2">
-                    <i className="ri-car-line"></i>
-                    <span>
-                      Hype <br /> Rentals
-                    </span>
-                  </Link>
-                </h1>
-              </div>
-            </Col>
+      <Container>
+  <Row>
+    <Col lg="4" md="3" sm="4">
+      <div className="logo">
+        <h1>
+          <Link to="/home" className="d-flex align-items-center gap-2">
+            <i className="ri-car-line"></i>
+            <span>
+              Hype <br /> Rentals
+            </span>
+          </Link>
+        </h1>
+      </div>
+    </Col>
 
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
-                <span>
-                  <i className="ri-earth-line"></i>
-                </span>
-                <div className="header__location-content">
-                  <h4>Mauritius</h4>
-                  <h6>Eben, Mauritius</h6>
-                </div>
-              </div>
-            </Col>
+    <Col lg="3" md="3" sm="4">
+      <div className="header__location d-flex align-items-center gap-2">
+        <span>
+          <i className="ri-earth-line"></i>
+        </span>
+        <div className="header__location-content">
+          <h4>Mauritius</h4>
+          <h6>Eben, Mauritius</h6>
+        </div>
+      </div>
+    </Col>
 
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
-                <span>
-                  <i className="ri-time-line"></i>
-                </span>
-                <div className="header__location-content">
-                  <h4>Sunday to Friday</h4>
-                  <h6>10am - 7pm</h6>
-                </div>
-              </div>
-            </Col>
+    <Col lg="3" md="3" sm="4">
+      <div className="header__location d-flex align-items-center gap-2">
+        <span>
+          <i className="ri-time-line"></i>
+        </span>
+        <div className="header__location-content">
+          <h4>Sunday to Friday</h4>
+          <h6>10am - 7pm</h6>
+        </div>
+      </div>
+    </Col>
 
-            <Col lg="2" md="3" sm="0" className="d-flex align-items-center justify-content-end">
-              <div className="d-flex align-items-center gap-3">
-                <Button className="header__btn btn">
-                  <a
-                    href="https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rentals."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="d-flex align-items-center gap-2"
-                  >
-                    <i className="ri-phone-line"></i> Request a call
-                  </a>
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+    <Col lg="2" md="3" sm="0" className="d-flex align-items-center justify-content-end">
+      <div className="d-flex align-items-center gap-3">
+        <Button className="header__btn btn">
+          <a
+            href="https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rentals."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="d-flex align-items-center gap-2"
+          >
+            <i className="ri-phone-line"></i> Request a call
+          </a>
+        </Button>
+
+        {/* Report Emergency Button */}
+        <Button className="header__btn btn" style={{ backgroundColor: 'red' }}>
+          <a
+            href="https://wa.me/+23057543530?text=Emergency%20report%20from%20Hype%20Rentals%20user."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="d-flex align-items-center gap-2"
+          >
+            <i className="ri-alert-line"></i> Report Emergency
+          </a>
+        </Button>
+      </div>
+    </Col>
+  </Row>
+</Container>
+
       </div>
 
       {/* Main Navbar */}

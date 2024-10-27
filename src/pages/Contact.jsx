@@ -8,19 +8,19 @@ import "../styles/contact.css";
 
 const socialLinks = [
   {
-    url: "https://www.facebook.com", // Replace with your Facebook URL
+    url: "https://www.facebook.com", 
     icon: "ri-facebook-line",
   },
   {
-    url: "https://www.instagram.com", // Replace with your Instagram URL
+    url: "https://www.instagram.com", 
     icon: "ri-instagram-line",
   },
   {
-    url: "https://www.linkedin.com", // Replace with your LinkedIn URL
+    url: "https://www.linkedin.com", 
     icon: "ri-linkedin-line",
   },
   {
-    url: "https://twitter.com", // Replace with your Twitter URL
+    url: "https://twitter.com", 
     icon: "ri-twitter-line",
   },
 ];

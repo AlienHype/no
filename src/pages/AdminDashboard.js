@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   const [availableCount, setAvailableCount] = useState(0);
   const [bookedCount, setBookedCount] = useState(0);
   
-  // Form state
+ 
   const [newCar, setNewCar] = useState({
     id: '',
     imgUrl: '',
