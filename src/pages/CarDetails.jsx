@@ -34,7 +34,7 @@ const CarDetails = () => {
                     Rs{singleCarItem.price}.00 / Day
                   </h6>
 
-                  <span className=" d-flex align-items-center gap-2">
+                  {/* <span className=" d-flex align-items-center gap-2">
                     <span style={{ color: "#f9a826" }}>
                       <i class="ri-star-s-fill"></i>
                       <i class="ri-star-s-fill"></i>
@@ -43,7 +43,7 @@ const CarDetails = () => {
                       <i class="ri-star-s-fill"></i>
                     </span>
                     ({singleCarItem.rating} ratings)
-                  </span>
+                  </span> */}
                 </div>
 
                 <p className="section__description">
@@ -70,13 +70,13 @@ const CarDetails = () => {
                     {singleCarItem.automatic}
                   </span>
 
-                  <span className=" d-flex align-items-center gap-1 section__description">
+                  {/* <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-timer-flash-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
                     {singleCarItem.speed}
-                  </span>
+                  </span> */}
                 </div>
 
                 <div
@@ -88,13 +88,13 @@ const CarDetails = () => {
                     {singleCarItem.gps}
                   </span>
 
-                  <span className=" d-flex align-items-center gap-1 section__description">
+                  {/* <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-wheelchair-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
                     {singleCarItem.seatType}
-                  </span>
+                  </span> */}
 
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i

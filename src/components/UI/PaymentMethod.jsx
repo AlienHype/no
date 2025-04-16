@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import paypal from "../../assets/all-images/paypal.jpg";
+// import paypal from "../../assets/all-images/paypal.jpg";
 import juice from "../../assets/all-images/juice.png";
 import facetoface from "../../assets/all-images/facetoface.png";
 import "../../styles/payment-method.css";
 
 const PaymentMethod = ({ handlePayment }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handlePaymentClick = (method) => {
     handlePayment(method);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Input } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
@@ -72,9 +72,9 @@ const Contact = () => {
                   <p className="section__description mb-0">hyperentals01@gmail.com</p>
                 </div>
 
-                <h6 className="fw-bold mt-4">Follow Us</h6>
+                {/* <h6 className="fw-bold mt-4">Follow Us</h6> */}
 
-                <div className="d-flex align-items-center gap-4 mt-3">
+                {/* <div className="d-flex align-items-center gap-4 mt-3">
                   {socialLinks.map((item, index) => (
                     <a
                       href={item.url}
@@ -86,7 +86,7 @@ const Contact = () => {
                       <i className={item.icon}></i>
                     </a>
                   ))}
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>

@@ -21,7 +21,7 @@ const HeroSlider = () => {
       <div className="slider__item slider__item-01 mt0">
         <Container>
           <div className="slider__content ">
-            <h4 className="text-light mb-3">For Rent Rs 3550 Per Day</h4>
+            <h4 className="text-light mb-3">For Rent Rs 6000 Per Day</h4>
             <h1 className="text-light mb-4">Sport & Luxury </h1>
 
             <button className="btn reserve__btn mt-4">
@@ -34,7 +34,7 @@ const HeroSlider = () => {
       <div className="slider__item slider__item-02 mt0">
         <Container>
           <div className="slider__content ">
-            <h4 className="text-light mb-3">For Rent Rs 4000 Per Day</h4>
+            <h4 className="text-light mb-3">For Rent Rs 7500 Per Day</h4>
             <h1 className="text-light mb-4">Off Roads</h1>
 
             <button className="btn reserve__btn mt-4">
@@ -51,7 +51,7 @@ const HeroSlider = () => {
             <h1 className="text-light mb-4">Luxury</h1>
 
             <button className="btn reserve__btn mt-4">
-              <Link to="/cars/BMW%20M5%20CS">Reserve Now</Link>
+              <Link to="/cars">Reserve Now</Link>
             </button>
           </div>
         </Container>

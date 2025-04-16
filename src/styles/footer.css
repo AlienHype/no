@@ -15,8 +15,9 @@
 }
 
 .footer__logo-content {
-  color: rgba(49, 48, 48, 0.715);
+  color: rgba(0, 0, 0, 0.715);
   margin-top: 15px;
+  font-weight: 600;
   line-height: 30px;
 }
 
@@ -28,12 +29,12 @@
 .quick__link a {
   color: rgba(0, 0, 0, 0.715);
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 600;
   transition: 0.3s;
 }
 
 .quick__link a:hover {
-  color: #84827f;
+  color: #ffffff;
 }
 
 .footer__link-title {
@@ -42,7 +43,7 @@
 
 .office__info {
   color: rgba(0, 0, 0, 0.715);
-  font-weight: 300;
+  font-weight: 600;
 }
 
 .newsletter {
@@ -67,7 +68,7 @@
 }
 
 .footer__bottom {
-  border-top: 1px solid #977c7c2f;
+  border-top: 1px solid #0000002f;
 }
 
 @media only screen and (max-width: 768px) {

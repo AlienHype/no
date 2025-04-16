@@ -1,10 +1,27 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Container, Row, Col, Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Alert,
+} from "reactstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { auth } from "./firebase-config";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "../../styles/header.css";
 
@@ -13,7 +30,7 @@ const navLinks = [
   { path: "/about", display: "About" },
   { path: "/cars", display: "Cars" },
   { path: "/contact", display: "Contact" },
-  { path: "/CarRentalPolicy", display: "Car Rental Policy" }, 
+  { path: "/CarRentalPolicy", display: "Car Rental Policy" },
 ];
 
 const Header = () => {
@@ -43,9 +60,8 @@ const Header = () => {
     const password = event.target.password.value;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      // Save additional information to your database if needed (firstName, lastName, phoneNumber)
       setRegisterModal(false);
-      toast.success('Registration successful!');
+      toast.success("Registration successful!");
     } catch (error) {
       setRegisterError(error.message);
     }
@@ -59,10 +75,10 @@ const Header = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      if (user.email === 'hyperentals01@gmail.com') {
-        navigate('/AdminDashboard');
+      if (user.email === "hyperentals01@gmail.com") {
+        navigate("/AdminDashboard");
       } else {
-        navigate('/Cars');
+        navigate("/Cars");
       }
       setLoginModal(false);
       toast.success(`Welcome back, ${user.email}`);
@@ -74,20 +90,19 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      localStorage.removeItem('user');
+      localStorage.removeItem("user");
       document.cookie.split(";").forEach((c) => {
         document.cookie = c.trim().replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 GMT");
       });
-      navigate('/home');
-      toast.info('You have been logged out');
+      navigate("/home");
+      toast.info("You have been logged out");
     } catch (error) {
-      toast.error('Failed to log out');
+      toast.error("Failed to log out");
     }
   };
 
   return (
     <header className="header">
-      {/* Header Top */}
       <div className="header__top">
         <Container>
           <Row>
@@ -113,12 +128,8 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <span className="d-flex align-items-center gap-1">
-                      Welcome, {user.email}
-                    </span>
-                    <Button color="danger" onClick={handleLogout}>
-                      Logout
-                    </Button>
+                    <span className="d-flex align-items-center gap-1">Welcome, {user.email}</span>
+                    <Button color="danger" onClick={handleLogout}>Logout</Button>
                   </>
                 )}
               </div>
@@ -127,79 +138,60 @@ const Header = () => {
         </Container>
       </div>
 
-      {/* Header Middle */}
       <div className="header__middle">
-      <Container>
-  <Row>
-    <Col lg="4" md="3" sm="4">
-      <div className="logo">
-        <h1>
-          <Link to="/home" className="d-flex align-items-center gap-2">
-            <i className="ri-car-line"></i>
-            <span>
-              Hype <br /> Rentals
-            </span>
-          </Link>
-        </h1>
-      </div>
-    </Col>
+        <Container>
+          <Row className="align-items-start header__middle-row">
+            <Col xs="6" className="d-flex flex-column align-items-start">
+              <div className="logo mb-2">
+                <h1>
+                  <Link to="/home" className="d-flex align-items-center gap-2">
+                    <i className="ri-car-line"></i>
+                    <span>
+                      Hype <br /> Rentals
+                    </span>
+                  </Link>
+                </h1>
+              </div>
 
-    <Col lg="3" md="3" sm="4">
-      <div className="header__location d-flex align-items-center gap-2">
-        <span>
-          <i className="ri-earth-line"></i>
-        </span>
-        <div className="header__location-content">
-          <h4>Mauritius</h4>
-          <h6>Eben, Mauritius</h6>
-        </div>
-      </div>
-    </Col>
+              {/* <Button className="header__btn btn">
+                <a
+                  href="https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rentals."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="d-flex align-items-center gap-2"
+                >
+                  <i className="ri-phone-line"></i> Request a call
+                </a>
+              </Button> */}
+            </Col>
 
-    <Col lg="3" md="3" sm="4">
-      <div className="header__location d-flex align-items-center gap-2">
-        <span>
-          <i className="ri-time-line"></i>
-        </span>
-        <div className="header__location-content">
-          <h4>Sunday to Friday</h4>
-          <h6>10am - 7pm</h6>
-        </div>
-      </div>
-    </Col>
+            <Col xs="6" className="d-flex flex-column align-items-end">
+              <div className="header__location d-flex align-items-center gap-2 mb-2">
+                <span>
+                  <i className="ri-earth-line"></i>
+                </span>
+                <div className="header__location-content text-end">
+                  <h4>Mauritius</h4>
+                  <h6>Eben, Mauritius</h6>
+                  
+                </div>
+              </div>
 
-    <Col lg="2" md="3" sm="0" className="d-flex align-items-center justify-content-end">
-      <div className="d-flex align-items-center gap-3">
-        <Button className="header__btn btn">
-          <a
-            href="https://wa.me/+23057543530?text=Hi%20I%20would%20like%20to%20request%20a%20call%20from%20Hype%20Rentals."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="d-flex align-items-center gap-2"
-          >
-            <i className="ri-phone-line"></i> Request a call
-          </a>
-        </Button>
-
-        {/* Report Emergency Button */}
-        <Button className="header__btn btn" style={{ backgroundColor: 'red' }}>
-          <a
-            href="https://wa.me/+23057543530?text=Emergency%20report%20from%20Hype%20Rentals%20user."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="d-flex align-items-center gap-2"
-          >
-            <i className="ri-alert-line"></i> Report Emergency
-          </a>
-        </Button>
-      </div>
-    </Col>
-  </Row>
-</Container>
-
+              <Button className="header__btn btn" style={{ backgroundColor: "red" }}>
+                <a
+                  href="https://wa.me/+23057543530?text=Emergency%20report%20from%20Hype%20Rentals%20user."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="d-flex align-items-center gap-2"
+                >
+                  <i className="ri-alert-line"></i> Report Emergency
+                </a>
+              </Button>
+            </Col>
+          </Row>
+        </Container>
       </div>
 
-      {/* Main Navbar */}
       <div className="main__navbar">
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">

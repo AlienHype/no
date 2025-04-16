@@ -75,7 +75,7 @@ const BookingForm = ({ carId }) => {
     const templateID = "template_i01zyfh";
     const userID = "e8W6hJlaDBpjDWRA_";
 
-    const emailData = { ...formData };
+    const emailData = { ...formData };  
 
     emailjs
       .send(serviceID, templateID, emailData, userID)
@@ -85,7 +85,6 @@ const BookingForm = ({ carId }) => {
         
         toast.success("You have successfully booked a car!");
 
-        // Handle redirection based on payment method
         switch (paymentMethod) {
           case "Face to Face":
             window.location.href =
@@ -104,7 +103,10 @@ const BookingForm = ({ carId }) => {
   };
 
   return (
-    <Form onSubmit={(e) => e.preventDefault()}>
+    <Form
+      onSubmit={(e) => e.preventDefault()}
+      style={{ border: "1px solid gray", padding: "20px", borderRadius: "5px" }}
+    >
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
         <Label for="firstName">
           First Name <span className="required-asterisk">*</span>
@@ -213,21 +215,20 @@ const BookingForm = ({ carId }) => {
         ></textarea>
       </FormGroup>
 
-      {/* Button to show payment options */}
-      <button
-        type="button"
-        className="btn btn-primary mt-3"
-        onClick={() => setShowPaymentOptions(!showPaymentOptions)}
-      >
-        {showPaymentOptions ? "Hide Payment Options" : "Show Payment Options"}
-      </button>
+        <button
+          type="button"
+          className="btn btn-primary mt-3"
+          style={{ backgroundColor: "black", color: "white" }}
+          onClick={() => setShowPaymentOptions(!showPaymentOptions)}
+        >
+          {showPaymentOptions ? "Hide Payment Options" : "Show Payment Options"}
+        </button>
 
-      {/* Conditionally render PaymentMethod component */}
+        {/* Conditionally render PaymentMethod component */}
       {showPaymentOptions && (
         <PaymentMethod handlePayment={handleSubmit} isFormComplete={isFormComplete} />
       )}
 
-     
       <ToastContainer />
     </Form>
   );
